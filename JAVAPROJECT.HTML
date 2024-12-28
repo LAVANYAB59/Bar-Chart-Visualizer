@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body{
+            background-color:rgb(250, 230, 247);
+            padding: 150px;
+
+        }
+        #chart{
+            margin-bottom: auto;
+            width:2px;
+        }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+   <canvas id="myChart" style="width:100%;max-width:500px"></canvas>
+   <script>
+    let chart;
+      const xValues=prompt("Enter the x value (comma separated):").split(",");
+      const yValues=prompt("Enter the y value (comma separated):").split(",");
+          const yValuesparsed=yValues.map(value=>parseFloat(value.trim()));
+      if(xValues.length !== yValuesparsed.length){
+       sample();
+    }
+   
+  else{
+        chart=new Chart("myChart", {
+         type:"bar",
+         data:{
+           labels:xValues,
+           datasets:[{
+           fill:false,
+           lineTension:0,
+           pointRadius: 3,
+           backgroundColor:'rgba(0,0,225,2)',
+           borderColor:'rgba(0,0,235,1.0)',
+           data:yValuesparsed
+           }]
+         },
+         options:{
+            legend:{display:false},
+            scales:{
+               yAxes:[{ticks: {min: 0,max: 100}}],
+            }
+         }
+
+      });}
+      function sample(){
+    alert("The xValues and yValues count must match");
+    return 0;
+   }
+   </script>
+</body>
+</html>
+</html>
+
+
